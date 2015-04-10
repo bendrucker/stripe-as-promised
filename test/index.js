@@ -27,6 +27,10 @@ describe('stripe-as-promised', () => {
     sandbox.restore();
   });
 
+  it('throws if no Promise is provided', () => {
+    expect(stripeAsPromised.bind()).to.throw('Promise');
+  });
+
   it('passes through utility methods', () => {
     promisify();
     expect(stripe.card.validateCardNumber).to.equal(Stripe.card.validateCardNumber);
