@@ -1,23 +1,38 @@
 'use strict';
 
-import clone from 'clone';
+import deep from 'deep-property';
 import extend from 'xtend/mutable';
 
-const methods = [
+const asyncMethods = [
   'card.createToken',
   'bankAccount.createToken',
   'bitcoinReceiver.createReceiver',
   'bitcoinReceiver.pollReceiver'
 ];
 
+const helperMethods = [
+  'setPublishableKey',
+  'card.validateCardNumber',
+  'card.validateExpiry',
+  'card.validateCVC',
+  'card.cardType',
+  'bankAccount.validateRoutingNumber',
+  'bankAccount.validateAccountNumber',
+  'bitcoinReceiver.cancelReceiverPoll'
+];
+
 export default function (Stripe, Promise) {
   if (!Promise) throw new Error('Promise constructor must be provided');
-  return methods.reduce((Stripe, method) => {
-    const [context, name] = method.split('.');
-    const fn = Stripe[context][name];
-    Stripe[context][name] = promisify(Promise, fn, context, stripeResponseHandler);
-    return Stripe;
-  }, clone(Stripe));
+  const stripe = {};
+  asyncMethods.forEach((method) => {
+    const [context] = method.split('.');
+    const fn = deep.get(Stripe, method);
+    deep.set(stripe, method, promisify(Promise, fn, context, stripeResponseHandler));
+  });
+  helperMethods.forEach((method) => {
+    deep.set(stripe, method, deep.get(Stripe, method));
+  });
+  return stripe;
 }
 
 function promisify (Promise, fn, context, resolver) {
