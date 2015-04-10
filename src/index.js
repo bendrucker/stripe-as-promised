@@ -23,7 +23,7 @@ export default function (Stripe, Promise) {
 function promisify (Promise, fn, context, resolver) {
   return function promisified (...args) {
     return new Promise((resolve, reject) => {
-      fn.apply(context, args.concat(() => {
+      fn.apply(context, args.concat(function () {
         resolver.apply({resolve, reject}, arguments);
       }));      
     });
