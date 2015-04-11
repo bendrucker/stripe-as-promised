@@ -12,7 +12,15 @@ module.exports = function (config) {
     },
     browsers: ['PhantomJS'],
     browserify: {
-      debug: true
+      debug: true,
+      transform: [
+        'babelify',
+        ['exposify', {
+          expose: {
+           'stripe-debug': 'Stripe'
+          }
+        }]
+      ]
     }
   });
 }

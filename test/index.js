@@ -6,6 +6,7 @@ import chaiAsPromised from 'chai-as-promised';
 import sinonChai from 'sinon-chai';
 import sinon from 'sinon';
 import Promise from 'bluebird';
+import Stripe from 'stripe-debug';
 import stripeAsPromised from '../';
 
 chai.use(chaiAsPromised).use(sinonChai);
