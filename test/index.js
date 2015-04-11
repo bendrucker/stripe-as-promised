@@ -5,7 +5,7 @@ import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import sinonChai from 'sinon-chai';
 import sinon from 'sinon';
-import Promise from 'bluebird';
+import Promise from 'native-promise-only';
 import Stripe from 'stripe-debug';
 import stripeAsPromised from '../';
 
