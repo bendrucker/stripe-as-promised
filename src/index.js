@@ -25,9 +25,8 @@ export default function (Stripe, Promise) {
   if (!Promise) throw new Error('Promise constructor must be provided');
   const stripe = {};
   asyncMethods.forEach((method) => {
-    const [context] = method.split('.');
-    const fn = deep.get(Stripe, method);
-    deep.set(stripe, method, promisify(Promise, fn, context, stripeResponseHandler));
+    const [receiver, methodName] = method.split('.');
+    deep.set(stripe, method, promisify(Promise, methodName, Stripe[receiver], stripeResponseHandler));
   });
   helperMethods.forEach((method) => {
     deep.set(stripe, method, deep.get(Stripe, method));
@@ -35,10 +34,10 @@ export default function (Stripe, Promise) {
   return stripe;
 }
 
-function promisify (Promise, fn, context, resolver) {
+function promisify (Promise, method, receiver, resolver) {
   return function promisified (...args) {
     return new Promise((resolve, reject) => {
-      fn.apply(context, args.concat(function () {
+      receiver[method].apply(receiver, args.concat(function () {
         resolver.apply({resolve, reject}, arguments);
       }));      
     });
