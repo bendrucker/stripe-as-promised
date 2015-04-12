@@ -7,7 +7,8 @@ const asyncMethods = [
   'card.createToken',
   'bankAccount.createToken',
   'bitcoinReceiver.createReceiver',
-  'bitcoinReceiver.pollReceiver'
+  'bitcoinReceiver.pollReceiver',
+  'bitcoinReceiver.getReceiver',
 ];
 
 const helperMethods = [
