@@ -2,9 +2,9 @@
   "name": "stripe-as-promised",
   "version": "1.0.2",
   "description": "Wrap Stripe.js async methods to return promises",
-  "main": "./src",
+  "main": "index.js",
   "scripts": {
-    "test": "karma start --single-run"
+    "test": "zuul --phantom -- test.js"
   },
   "repository": {
     "type": "git",
@@ -24,31 +24,19 @@
   },
   "homepage": "https://github.com/bendrucker/stripe-as-promised",
   "devDependencies": {
-    "babel": "~5.0.12",
-    "chai": "~2.2.0",
-    "chai-as-promised": "~4.3.0",
-    "es5-shim": "~4.1.0",
-    "exposify": "~0.3.0",
-    "karma": "~0.12.31",
-    "karma-browserify": "~4.1.2",
-    "karma-cli": "0.0.4",
-    "karma-mocha": "~0.1.10",
-    "karma-phantomjs-launcher": "~0.1.4",
-    "mocha": "~2.2.4",
     "native-promise-only": "~0.7.8-a",
+    "phantomjs": "~1.9.17",
     "sinon": "~1.14.1",
-    "sinon-chai": "~2.7.0",
-    "stripe-debug": "^2.0.0"
+    "stripe-debug": "^2.0.0",
+    "tape": "~4.0.0",
+    "zuul": "~3.0.0"
   },
   "dependencies": {
-    "babelify": "~6.0.2",
-    "deep-property": "~1.1.0",
-    "getobject": "~0.1.0",
+    "dot-prop": "bendrucker/dot-prop#allow-fn",
     "xtend": "~4.0.0"
   },
-  "browserify": {
-    "transform": [
-      "babelify"
-    ]
-  }
+  "files": [
+    "index.js",
+    "readme.md"
+  ]
 }
