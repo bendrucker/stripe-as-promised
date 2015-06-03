@@ -1,21 +1,33 @@
 # stripe-as-promised [![Build Status](https://travis-ci.org/bendrucker/stripe-as-promised.svg?branch=master)](https://travis-ci.org/bendrucker/stripe-as-promised)
 
-Wrap [Stripe.js](https://stripe.com/docs/stripe.js)'s asynchronous methods to return promises instead of calling callbacks.
+> Wrap [Stripe.js](https://stripe.com/docs/stripe.js)'s asynchronous methods to return promises instead of calling callbacks.
 
 ## Installing
 
 ```sh
 # npm
 $ npm install stripe-as-promised
-# bower
-$ bower install stripe-as-promsied
 ```
 
 ## API
 
-##### `stripeAsPromised(Stripe, Promise)` -> `promisifed`
+#### `stripeAsPromised(Stripe, Promise)` -> `promisifedStripe`
 
-`stripeAsPromised` accepts two arguments: `Stripe` (typically exposed as a global `Stripe`) and `Promise`, a promise constructor. Both arguments are required, even if a native promise is available. A `promisified` Stripe object is returned. It exposes the same public API as Stripe.js, but promisifies the following methods:
+##### Stripe
+
+*Required*  
+Type: `function`
+
+The Stripe.js library
+
+##### Promise
+
+*Required*  
+Type: `function`
+
+A Promise constructor
+
+The returned promisified object promisifes the following methods in addition to exposing utility methods:
 
 * [`card.createToken`](https://stripe.com/docs/stripe.js#card-createToken)
 * [`bankAccount.createToken`](https://stripe.com/docs/stripe.js#bank-account-createToken)
@@ -75,3 +87,7 @@ stripe.bitcoinReceiver.createReceiver(payment)
 ```
 
 If the receiver is never filled, neither statement is printed. In your application, you'll probably want to implement your own polling implementation that treats cancellations as errors that can be caught and handled downstream.
+
+## License
+
+MIT © [Ben Drucker](http://bendrucker.me)
