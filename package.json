@@ -32,7 +32,7 @@
     "zuul": "~3.0.0"
   },
   "dependencies": {
-    "dot-prop": "bendrucker/dot-prop#allow-fn",
+    "dot-prop": "~2.1.0",
     "xtend": "~4.0.0"
   },
   "files": [
