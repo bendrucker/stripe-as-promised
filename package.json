@@ -29,14 +29,15 @@
     "sinon": "~1.14.1",
     "stripe-debug": "^2.0.0",
     "tape": "~4.0.0",
+    "xtend": "~4.0.1",
     "zuul": "~3.0.0"
   },
   "dependencies": {
     "dot-prop": "~2.1.0",
-    "xtend": "~4.0.0"
+    "pify": "~2.3.0",
+    "stripe-errback": "~1.0.1"
   },
   "files": [
-    "index.js",
-    "readme.md"
+    "*.js"
   ]
 }

@@ -1,6 +1,7 @@
 'use strict';
 
 var test = require('tape')
+var extend = require('xtend')
 var stub = require('sinon').stub
 var Promise = require('native-promise-only')
 var Stripe = window.Stripe
@@ -41,9 +42,9 @@ test(function (t) {
     stripe.bankAccount.createToken({}, {}).catch(function (err) {
       t.ok(err instanceof Error)
       t.equal(err.message, response.error.message)
-      t.deepEqual(err, response.error)
+      t.deepEqual(err, extend(response.error, {status: 400}))
     })
   })
-  
+
   t.end()
 })

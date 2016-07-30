@@ -31,6 +31,7 @@ The returned promisified object promisifes the following methods in addition to 
 
 * [`card.createToken`](https://stripe.com/docs/stripe.js#card-createToken)
 * [`bankAccount.createToken`](https://stripe.com/docs/stripe.js#bank-account-createToken)
+* [`piiData.createToken`](https://stripe.com/docs/stripe.js?#pii-data-createToken)
 * [`bitcoinReceiver.createReceiver`](https://stripe.com/docs/stripe.js#bitcoinreceiver-createreceiver)
 * [`bitcoinReceiver.pollReceiver`](https://stripe.com/docs/stripe.js#bitcoinreceiver-pollreceiver)
 * `bitcoinReceiver.getReceiver` (undocumented)
