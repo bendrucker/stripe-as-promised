@@ -8,5 +8,5 @@ module.exports = function promisifyStripe (Stripe, Promise) {
   if (typeof Promise !== 'function') throw new Error('Promise constructor must be provided')
 
   var stripe = stripeErrback(Stripe)
-  return promisify(stripe)
+  return promisify(stripe, Promise)
 }
