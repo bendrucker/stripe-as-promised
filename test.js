@@ -27,6 +27,31 @@ test(function (t) {
       var args = Stripe.card.createToken.firstCall.args
       t.equal(args[0], data)
       t.equal(args[1], params)
+      Stripe.card.createToken.restore()
+    })
+  })
+
+  t.test('custom promise', function (t) {
+    t.plan(4)
+
+    var _stripe = stripeAsPromised(Stripe, function CustomPromise (resolver) {
+      resolver(
+        function resolve (data) {
+          t.deepEqual(data, {id: 'token'})
+        },
+        t.fail
+      )
+    })
+
+    stub(Stripe.card, 'createToken').yieldsAsync(200, {id: 'token'})
+    var data = {}
+    var params = {}
+    _stripe.card.createToken(data, params).then(function (res) {
+      t.equal(res.id, 'token')
+      t.equal(Stripe.card.createToken.callCount, 1)
+      var args = Stripe.card.createToken.firstCall.args
+      t.equal(args[0], data)
+      t.equal(args[1], params)
     })
   })
 
