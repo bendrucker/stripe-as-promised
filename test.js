@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 var test = require('tape')
 var extend = require('xtend')
@@ -19,7 +19,8 @@ test(function (t) {
   t.test('createToken', function (t) {
     t.plan(4)
     stub(Stripe.card, 'createToken').yieldsAsync(200, {id: 'token'})
-    var data = {}, params = {}
+    var data = {}
+    var params = {}
     stripe.card.createToken(data, params).then(function (res) {
       t.equal(res.id, 'token')
       t.equal(Stripe.card.createToken.callCount, 1)

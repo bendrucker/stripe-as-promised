@@ -4,7 +4,7 @@
   "description": "Wrap Stripe.js async methods to return promises",
   "main": "index.js",
   "scripts": {
-    "test": "zuul --phantom -- test.js"
+    "test": "standard && zuul --phantom -- test.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "native-promise-only": "~0.7.8-a",
     "phantomjs": "~1.9.17",
     "sinon": "~1.14.1",
+    "standard": "~8.6.0",
     "stripe-debug": "^2.0.0",
     "tape": "~4.0.0",
     "xtend": "~4.0.1",
