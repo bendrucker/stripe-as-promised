@@ -32,7 +32,7 @@ test(function (t) {
   })
 
   t.test('custom promise', function (t) {
-    t.plan(4)
+    t.plan(5)
 
     var _stripe = stripeAsPromised(Stripe, function CustomPromise (resolver) {
       resolver(
@@ -41,6 +41,12 @@ test(function (t) {
         },
         t.fail
       )
+
+      return {
+        then: function (onResolve) {
+          onResolve({id: 'token'})
+        }
+      }
     })
 
     stub(Stripe.card, 'createToken').yieldsAsync(200, {id: 'token'})
