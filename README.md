@@ -1,4 +1,4 @@
-# stripe-as-promised [![Build Status](https://travis-ci.org/bendrucker/stripe-as-promised.svg?branch=master)](https://travis-ci.org/bendrucker/stripe-as-promised)
+# stripe-as-promised [![Build Status](https://travis-ci.org/bendrucker/stripe-as-promised.svg?branch=master)](https://travis-ci.org/bendrucker/stripe-as-promised) [![Greenkeeper badge](https://badges.greenkeeper.io/bendrucker/stripe-as-promised.svg)](https://greenkeeper.io/)
 
 > Wrap [Stripe.js](https://stripe.com/docs/stripe.js)'s asynchronous methods to return promises instead of calling callbacks.
 
