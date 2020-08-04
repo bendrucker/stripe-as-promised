@@ -34,7 +34,7 @@
     "zuul": "~3.0.0"
   },
   "dependencies": {
-    "dot-prop": "~2.1.0",
+    "dot-prop": "~5.2.0",
     "pify": "~2.3.0",
     "stripe-errback": "~1.0.1"
   },
